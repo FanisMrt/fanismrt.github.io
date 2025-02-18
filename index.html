@@ -3,20 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 1 Year Anniversary</title>
+    <title>Enter Password</title>
     <style>
-        /* Background */
+        /* General Styling */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            color: #fff;
             text-align: center;
-            background: #ffb6c1; /* Light Pink */
-            overflow: hidden;
+            background: #222;
+            color: white;
         }
 
-        /* Floating Heart Emojis */
+        /* Password Page */
+        #password-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1.2em;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin-top: 10px;
+            background: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff4081;
+        }
+
+        /* Hide the Anniversary Page Initially */
+        #anniversary-page {
+            display: none;
+            height: 100vh;
+            background: #ffb6c1;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ffebcd;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .gift-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #ff69b4;
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .gift-btn:hover {
+            background: #ff4081;
+        }
+
+        .gift-code {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffebcd;
+        }
+
+        /* Floating Hearts */
         .hearts {
             position: fixed;
             top: 0;
@@ -38,87 +129,60 @@
             0% { transform: translateY(100vh) scale(1); opacity: 0.8; }
             100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
         }
-
-        /* Main Container */
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #ffebcd;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #fff;
-        }
-
-        /* Button */
-        .gift-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background: #ff69b4;
-            color: #fff;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: background 0.3s;
-        }
-
-        .gift-btn:hover {
-            background: #ff4081;
-        }
-
-        /* Gift Code */
-        .gift-code {
-            margin-top: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #ffebcd;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Floating Hearts Container -->
-    <div class="hearts"></div>
+    <!-- Password Prompt Page -->
+    <div id="password-page">
+        <div class="password-container">
+            <h2>Enter the Secret Code 💖</h2>
+            <input type="password" id="password" placeholder="Enter Code">
+            <br>
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    </div>
 
-    <!-- Anniversary Message -->
-    <div class="container">
-        <h1>Happy 1 Year Anniversary, Baby! 💖</h1>
-        <p>I love you so much! You are my everything, and I’m so grateful for every moment with you.</p>
-        <a href="https://g.co/kgs/MFzoxrS" target="_blank" class="gift-btn">🎁 Go Get Your Gift!</a>
-        <p class="gift-code">Gift Code: <strong>62036963</strong></p>
+    <!-- Anniversary Page (Hidden Initially) -->
+    <div id="anniversary-page">
+        <div class="hearts"></div>
+        <div class="container">
+            <h1>Happy 1 Year Anniversary, Baby! 💖</h1>
+            <p>I love you so much! You are my everything, and I’m so grateful for every moment with you.</p>
+            <a href="https://g.co/kgs/MFzoxrS" target="_blank" class="gift-btn">🎁 Go Get Your Gift!</a>
+            <p class="gift-code">Gift Code: <strong>79949641</strong></p>
+        </div>
     </div>
 
     <script>
-        // Floating Heart Emojis
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "💖";
-            document.querySelector(".hearts").appendChild(heart);
-            
-            // Random positioning and size
-            const size = Math.random() * 20 + 20 + "px";
-            heart.style.fontSize = size;
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-
-            setTimeout(() => heart.remove(), 5000);
+        function checkPassword() {
+            const input = document.getElementById("password").value;
+            if (input === "1337") {
+                document.getElementById("password-page").style.display = "none";
+                document.getElementById("anniversary-page").style.display = "flex";
+                startHearts();
+            } else {
+                alert("Wrong password! Try again.");
+            }
         }
 
-        setInterval(createHeart, 300);
+        function startHearts() {
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.innerHTML = "💖";
+                document.querySelector(".hearts").appendChild(heart);
+                
+                const size = Math.random() * 20 + 20 + "px";
+                heart.style.fontSize = size;
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+                setTimeout(() => heart.remove(), 5000);
+            }
+            
+            setInterval(createHeart, 300);
+        }
     </script>
 
 </body>
