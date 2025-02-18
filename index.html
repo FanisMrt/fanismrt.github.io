@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1 Year Anniversary</title>
+    <style>
+        /* Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            background: #ffb6c1; /* Light Pink */
+            overflow: hidden;
+        }
+
+        /* Floating Heart Emojis */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 5s infinite linear;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+        }
+
+        /* Main Container */
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #ffebcd;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        /* Button */
+        .gift-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #ff69b4;
+            color: #fff;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .gift-btn:hover {
+            background: #ff4081;
+        }
+
+        /* Gift Code */
+        .gift-code {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffebcd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts Container -->
+    <div class="hearts"></div>
+
+    <!-- Anniversary Message -->
+    <div class="container">
+        <h1>Happy 1 Year Anniversary, Baby! 💖</h1>
+        <p>I love you so much! You are my everything, and I’m so grateful for every moment with you.</p>
+        <a href="https://g.co/kgs/MFzoxrS" target="_blank" class="gift-btn">🎁 Go Get Your Gift!</a>
+        <p class="gift-code">Gift Code: <strong>62036963</strong></p>
+    </div>
+
+    <script>
+        // Floating Heart Emojis
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            document.querySelector(".hearts").appendChild(heart);
+            
+            // Random positioning and size
+            const size = Math.random() * 20 + 20 + "px";
+            heart.style.fontSize = size;
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
